@@ -33,9 +33,10 @@ resource "azurerm_linux_virtual_machine" "confluent_alpha_vm" {
 
   }
 
-  tags = {
-    environment = "Terraform Demo"
+  lifecycle {
+    ignore_changes = [tags]
   }
+
 }
 
 # Create (and display) an SSH key
@@ -52,9 +53,10 @@ resource "azurerm_storage_account" "confluent_stoage_block_1" {
   account_tier                = "Standard"
   account_replication_type    = "LRS"
 
-  tags = {
-    environment = "Terraform Demo"
+  lifecycle {
+    ignore_changes = [tags]
   }
+
 }
 
 # Generate random text for a unique storage account name

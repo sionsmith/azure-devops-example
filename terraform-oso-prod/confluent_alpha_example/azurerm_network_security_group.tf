@@ -16,8 +16,8 @@ resource "azurerm_network_security_group" "confluent_security_group" {
     destination_address_prefix = "*"
   }
 
-  tags = {
-    environment = "Terraform Demo"
+  lifecycle {
+    ignore_changes = [tags]
   }
 }
 
