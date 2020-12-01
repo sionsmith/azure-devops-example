@@ -1,6 +1,6 @@
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "confluent_alpha_vm" {
-  name                  = "confluent-alpha-vm3"
+  name                  = "${var.resource_group_name}-vm-01"
   location              = azurerm_resource_group.confluent_resource_group.location
   resource_group_name   = azurerm_resource_group.confluent_resource_group.name
   network_interface_ids = [azurerm_network_interface.confluent_network_interface.id]
@@ -19,7 +19,7 @@ resource "azurerm_linux_virtual_machine" "confluent_alpha_vm" {
     version   = "latest"
   }
 
-  computer_name  = "confluent-alpha-vm3"
+  computer_name  = "${var.resource_group_name}-vm-01"
   admin_username = "azureuser"
   disable_password_authentication = true
 
@@ -36,7 +36,6 @@ resource "azurerm_linux_virtual_machine" "confluent_alpha_vm" {
   lifecycle {
     ignore_changes = [tags]
   }
-
 }
 
 # Create (and display) an SSH key
@@ -47,7 +46,7 @@ resource "tls_private_key" "example_ssh" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "confluent_stoage_block_1" {
-  name                        = "diag${random_id.randomId.hex}"
+  name                        = var.storage_name
   resource_group_name         = azurerm_resource_group.confluent_resource_group.name
   location                    = azurerm_resource_group.confluent_resource_group.location
   account_tier                = "Standard"
@@ -56,7 +55,6 @@ resource "azurerm_storage_account" "confluent_stoage_block_1" {
   lifecycle {
     ignore_changes = [tags]
   }
-
 }
 
 # Generate random text for a unique storage account name

@@ -2,6 +2,7 @@
 *.tfstate
 *.tfstate.backup
 *.zip
+*.tfvars
 
 
 # IntelliJ project files

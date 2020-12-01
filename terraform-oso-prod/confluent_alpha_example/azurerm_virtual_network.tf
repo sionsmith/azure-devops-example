@@ -42,7 +42,7 @@ resource "azurerm_network_interface" "confluent_network_interface" {
     private_ip_address_allocation = "Dynamic"
   }
 
-  tags = {
-    environment = "Terraform Demo"
+  lifecycle {
+    ignore_changes = [tags]
   }
 }
