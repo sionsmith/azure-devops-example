@@ -3,7 +3,7 @@
 *.tfstate.backup
 *.zip
 *.tfvars
-
+remote_state.tf
 
 # IntelliJ project files
 .idea
@@ -26,3 +26,5 @@ lambda-backup.zip
 .vagrant/
 *un~
 *~
+
+

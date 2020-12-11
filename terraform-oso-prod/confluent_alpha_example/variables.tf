@@ -12,10 +12,6 @@ variable "core_resource_group" {
   type = string
   description = "Resource group name of where virtual network is deployed."
 }
-variable "subnet_name" {
-  type = string
-  description = "thing"
-}
 
 variable "prefix" {
   type = string
