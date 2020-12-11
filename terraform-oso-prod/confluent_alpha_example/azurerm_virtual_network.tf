@@ -11,8 +11,8 @@ resource "azurerm_network_interface" "confluent_network_interface" {
     public_ip_address_id = azurerm_public_ip.confluent_public_ip.id
   }
 
-  tags = {
-    environment = "Terraform Demo"
+  lifecycle {
+    ignore_changes = [tags]
   }
 }
 
